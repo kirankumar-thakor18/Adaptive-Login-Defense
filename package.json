@@ -1,8 +1,8 @@
 {
-  "name": "adaptive-login-defense-demo",
+  "name": "adaptive-login-defense-prototype",
   "version": "1.0.0",
   "private": true,
-  "description": "A localhost-only adaptive login defense and decoy-page learning demo",
+  "description": "A localhost-only adaptive login defense and decoy-page learning prototype",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

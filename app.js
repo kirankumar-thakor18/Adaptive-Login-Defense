@@ -13,7 +13,7 @@ const page = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Adaptive Login Defense — Local Demo</title>
+  <title>Adaptive Login Defense — Local Prototype</title>
   <style>
     :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #0b1220; color: #e5edf9; }
     body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
@@ -35,7 +35,7 @@ const page = `<!doctype html>
     <section class="card">
       <div class="tag">Local security lab</div>
       <h1>Adaptive login defense</h1>
-      <p>This demo treats every submitted login as a failed, synthetic attempt. After five attempts, this browser's local client address is temporarily sent to an isolated decoy page.</p>
+      <p>This prototype treats every submitted login as a failed, synthetic attempt. After five attempts, this browser's local client address is temporarily sent to an isolated decoy page.</p>
       <form id="login">
         <label for="username">Test username</label>
         <input id="username" name="username" autocomplete="off" maxlength="120" required>
@@ -44,7 +44,7 @@ const page = `<!doctype html>
         <button type="submit">Simulate login attempt</button>
       </form>
       <p id="status" role="status" aria-live="polite"></p>
-      <button id="reset" class="secondary" type="button">Reset local demo</button>
+      <button id="reset" class="secondary" type="button">Reset local state</button>
       <p class="note">Use fictional values only. This prototype has no real authentication, stores no passwords, and listens only on this computer.</p>
     </section>
   </main>
@@ -87,7 +87,7 @@ const decoyPage = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Isolated Decoy — Local Demo</title>
+  <title>Isolated Decoy — Local Prototype</title>
   <style>
     :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #10151d; color: #e5edf9; }
     body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
@@ -99,10 +99,10 @@ const decoyPage = `<!doctype html>
 </head>
 <body>
   <main>
-    <div class="tag">Isolated demo decoy</div>
+    <div class="tag">Isolated prototype decoy</div>
     <h1>This is not a real sign-in page</h1>
-    <p>The local demo reached its attempt limit. This page is static and does not accept or collect credentials or other input.</p>
-    <p>To continue testing after the temporary lockout, return to the <a href="/">local demo</a> and choose “Reset local demo.”</p>
+    <p>The local prototype reached its attempt limit. This page is static and does not accept or collect credentials or other input.</p>
+    <p>To continue testing after the temporary lockout, return to the <a href="/">local prototype</a> and choose “Reset local state.”</p>
   </main>
 </body>
 </html>`;
@@ -178,7 +178,7 @@ function createServer() {
 
     if (request.method === "POST" && request.url === "/api/reset") {
       clients.delete(address);
-      send(response, 200, { message: "Local demo state reset." });
+      send(response, 200, { message: "Local prototype state reset." });
       return;
     }
 
@@ -211,7 +211,7 @@ function createServer() {
 
       const state = clientState(address, now, clients);
       if (state.blockedUntil > now) {
-        send(response, 429, { mode: "decoy", message: "Temporary demo lockout is active." });
+        send(response, 429, { mode: "decoy", message: "Temporary prototype lockout is active." });
         return;
       }
 
@@ -224,7 +224,7 @@ function createServer() {
 
       send(response, 401, {
         mode: "observe",
-        message: `Synthetic login failed. ${ATTEMPT_LIMIT - state.attempts} attempt(s) remain before the demo lockout.`
+        message: `Synthetic login failed. ${ATTEMPT_LIMIT - state.attempts} attempt(s) remain before the prototype lockout.`
       });
       return;
     }
@@ -236,11 +236,11 @@ function createServer() {
 if (require.main === module) {
   const server = createServer();
   server.listen(PORT, HOST, () => {
-    console.log(`Local demo listening at http://${HOST}:${PORT}`);
+    console.log(`Local prototype listening at http://${HOST}:${PORT}`);
   });
 
   server.on("error", (error) => {
-    console.error("Could not start local demo:", error.message);
+    console.error("Could not start local prototype:", error.message);
     process.exitCode = 1;
   });
 }

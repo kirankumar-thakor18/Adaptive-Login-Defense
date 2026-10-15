@@ -36,7 +36,7 @@ async function post(path, body) {
   });
 }
 
-test("serves the local demo with security headers", async () => {
+test("serves the local prototype with security headers", async () => {
   const response = await fetch(baseUrl);
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type"), /text\/html/);

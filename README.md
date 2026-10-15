@@ -1,8 +1,8 @@
-# Adaptive Login Defense — Local Demo
+# Adaptive Login Defense
 
-A dependency-free Node.js learning project that demonstrates a simple defensive login flow: repeated synthetic failures trigger a temporary lockout and a static decoy page.
+A dependency-free Node.js learning prototype for a defensive login flow: repeated synthetic failures trigger a temporary lockout and a static decoy page.
 
-> **Local learning demo only.** This is not an authentication system and is not intended to protect or test a real website. Use fictional values only. Do not deploy it publicly.
+> **Local learning prototype only.** This is not an authentication system and is not intended to protect or test a real website. Use fictional values only. Do not deploy it publicly.
 
 ## Requirements
 
@@ -14,14 +14,14 @@ A dependency-free Node.js learning project that demonstrates a simple defensive 
 npm start
 ```
 
-Open <http://127.0.0.1:3000>, then submit fictional values five times to trigger the 30-second lockout. Use **Reset local demo** to clear the in-memory state. To use a different port in PowerShell:
+Open <http://127.0.0.1:3000>, then submit fictional values five times to trigger the 30-second lockout. Use **Reset local state** to clear the in-memory state. To use a different port in PowerShell:
 
 ```powershell
 $env:PORT = "3001"
 npm start
 ```
 
-The server binds only to `127.0.0.1`. Every submitted login is treated as a synthetic failure. Password values are neither logged nor saved, and the static decoy page accepts no input. Attempt state is held in memory, tracked by the connecting client address, and lost when the server stops. The reset endpoint is intentionally unauthenticated for this localhost demo.
+The server binds only to `127.0.0.1`. Every submitted login is treated as a synthetic failure. Password values are neither logged nor saved, and the static decoy page accepts no input. Attempt state is held in memory, tracked by the connecting client address, and lost when the server stops. The reset endpoint is intentionally unauthenticated for this localhost prototype.
 
 ## Tests
 
@@ -34,11 +34,11 @@ npm run check
 
 ## Limitations
 
-- The demo has no real user accounts or authentication.
-- A client address is only a simple demo identifier; shared networks and address changes can cause incorrect grouping.
+- The prototype has no real user accounts or authentication.
+- A client address is only a simple prototype identifier; shared networks and address changes can cause incorrect grouping.
 - State is not persistent and is not shared between server instances.
 - The decoy is static and does not collect activity or credentials.
-- The demo is not hardened for internet exposure or production use.
+- The prototype is not hardened for internet exposure or production use.
 
 ## Push to GitHub
 
@@ -47,7 +47,7 @@ Create an empty repository on GitHub, then run these commands from this project 
 ```powershell
 git init
 git add app.js test/app.test.js package.json README.md .gitignore
-git commit -m "Add local adaptive login defense demo"
+git commit -m "Add local adaptive login defense prototype"
 git branch -M main
 git remote add origin https://github.com/kirankumar-thakor18/Adaptive-Login-Defense.git
 git push -u origin main
