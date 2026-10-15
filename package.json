@@ -1,0 +1,16 @@
+{
+  "name": "adaptive-login-defense-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A localhost-only adaptive login defense and decoy-page learning demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node --test",
+    "check": "node --check app.js && node --check test/app.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}
