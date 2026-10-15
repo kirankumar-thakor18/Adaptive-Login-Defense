@@ -41,7 +41,7 @@ test("serves the local prototype with security headers", async () => {
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type"), /text\/html/);
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
-  assert.match(await response.text(), /Adaptive login defense/);
+  assert.match(await response.text(), /Adaptive Login Defense/);
 });
 
 test("rejects invalid login input without counting it as an attempt", async () => {
