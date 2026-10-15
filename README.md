@@ -49,7 +49,7 @@ git init
 git add app.js test/app.test.js package.json README.md .gitignore
 git commit -m "Add local adaptive login defense demo"
 git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git remote add origin https://github.com/kirankumar-thakor18/Adaptive-Login-Defense.git
 git push -u origin main
 ```
 
